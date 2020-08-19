@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Libft"
-categories: "42 cursus"
 ---
 
 Introduction#
