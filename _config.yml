@@ -16,11 +16,11 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Kitkat-42's Programming"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Kitkat-42"
+description              : ""
 url                      : "https://kitkat-42.github.io"
 # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : ""
