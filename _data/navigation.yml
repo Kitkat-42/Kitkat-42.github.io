@@ -1,0 +1,10 @@
+main:
+  - title: "about"
+    url: /about/
+  - title: "42_cursus"
+    url: /42_cursus/
+  - title: "category"
+    url: /category/
+  - title: "others"
+    url: /others/
+

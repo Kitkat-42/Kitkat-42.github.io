@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /42_cursus/
-title: "42_cursus"
+permalink: /about/
+title: "about"
 author_profile: true
 ---
