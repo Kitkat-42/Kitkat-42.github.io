@@ -1,9 +1,7 @@
 ---
-layout: single
+layout: posts
 title: get_next_line
 ---
-
-# get_next_line
 
 ## 1. 목표
  line을 file descriptor로부터 읽어 줄바꿈과 함께 리턴하는 함수를 만든다.
