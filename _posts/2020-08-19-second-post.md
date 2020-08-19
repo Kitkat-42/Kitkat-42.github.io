@@ -1,7 +1,6 @@
 ---
-layout: posts
+layout: single
 title: "get_next_line"
-categories: "42 cursus"
 ---
 
 This is the second post.
