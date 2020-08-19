@@ -11,12 +11,14 @@ title: get_next_line
 
 ## 2. Mandatory part
 
+<table>
 | 함수 이름	| get_next_line |
 | --- | --- |
 | 프로토타입 | int	get_next_line(int fd, char **line); |
 | 제출할 파일 |get_next_line.c, get_next_line_utils.c, get_next_line.h |
 | 파라미터 | #1. 읽어올 파일 디스크립터<br>  #2. 읽어진 값|
 | 리턴값 | 1: line이 읽어짐<br> 0: EOF(End-of-File, 파일 끝)에 도달함<br> -1: 에러 발생 |
+</table>
 <br>
 
 - get_next_line 함수를 loop안에서 호출하면, 파일 디스크립터의 텍스트를 한줄씩 읽어오게 된다.
