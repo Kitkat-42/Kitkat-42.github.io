@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Libft"
+title: Libft
 ---
 
 This is the first post.
