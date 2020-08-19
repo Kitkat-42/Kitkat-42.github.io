@@ -95,15 +95,16 @@ analytics:
 
 # Site Author
 author:
-  name             : "Your Name"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  name             : "Kitkat-42"
+  avatar           : "/assets/images/logo.png"
+  # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  bio              : "42서울 코딩 블로그"
+  location         : "Gaepo-dong, Seoul, Korea"
   email            :
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:your.name@email.com"
+      url: "mailto:issyo1022@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
