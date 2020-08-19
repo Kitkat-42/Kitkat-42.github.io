@@ -10,7 +10,6 @@ title: get_next_line
 <br>
 
 ## 2. Mandatory part
-<br>
 
 | 함수 이름	| get_next_line |
 | --- | --- |
@@ -57,7 +56,6 @@ Buffer size는 평가자와 moulinette에 의해 수정될 수 있다.
 
 
 ## 3. Bonus part
-<br>
 
 이 파트를 위해 모든 initial files 이름들에 _bonus를 붙여 제출해야 한다.
 
