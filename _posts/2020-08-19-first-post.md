@@ -1,15 +1,16 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
+title: "Libft"
+categories: "42 cursus"
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-​```python
-def print_hi(name):
-  print("hello", name)
-print_hi('Tom')
-​```
+Introduction#
+머신 러닝은 이제 일상에서 뗄레야 뗄 수 없는 존재가 되었다. 한가지 예로, 네이버의 검색 페이지에는 머신 러닝 기술이 들어가지 않은 곳을 찾아보기 힘들 정도다. 자동 완성, 음성 인식, 연관검색어, 이미지 검색, 문장 요약 등의 영역에서 수많은 머신 러닝 기술들이 쓰이고 있다.
+네이버 검색 기술
+그러나 머신 러닝이란 말이 사람들 사이에서 점점 더 널리 쓰이면서, 머신 러닝이 정확히 무엇인지 알지 못하고 엉뚱한 데에 머신 러닝이란 말을 남용하는 경우가 늘어나고 있다. 머신 러닝의 개념을 명확하게 알고 사용하기 위해 머신 러닝이 무엇인지 정확히 알아보자.
+머신 러닝이란#
+어떤 컴퓨터 프로그램이 경험을 쌓을 수록 성능이 좋아질 때, 우리는 그 프로그램이 ‘학습’한다고 말한다. 배를 누르면 소리를 내는 인형을 생각해보자. 인형은 배가 몇번 눌리든 정해진 소리만을 낼 수 있다. 이것이 전통적인 프로그램의 예이다. 전통적인 컴퓨터 프로그램은 정해진 규칙만을 따르기 때문에 경험을 많이 한다고 성능이 더 좋아지거나 나빠지지 않는다. 반대로 페이스북은 쓰면 쓸수록 점점 더 자신의 취향에 맞는 글들을 상단에 보여준다. 이는 페이스북이 머신 러닝 기법들을 적용하고 있기 때문이다.
+머신 러닝의 일반적인 정의는 다음과 같다.
+A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at task in T, as meausred by P, improves with experience E.
+Tom Mitchell (1998)
+정의만 읽어서는 머신 러닝이 정확히 무엇인지 와닿기 쉽지 않다. 머신 러닝의 개념을 좀 더 이해하기 위해서, 머신 러닝과 헷갈릴 수 있는 다른 개념들과 머신 러닝을 비교해보자.
