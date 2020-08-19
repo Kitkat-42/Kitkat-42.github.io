@@ -1,6 +1,8 @@
 ---
 layout: single
-title: Libft
+title: Libft 함수 정리
+teaser: "/assets/images/mac.png"
+
 ---
 
 ## 1. Introduction
