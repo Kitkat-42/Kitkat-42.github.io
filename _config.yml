@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Kitkat's 42 Seoul"
+title                    : "Kitkat & 42Seoul"
 title_separator          : "-"
 subtitle                 : ""
 # site tagline that appears below site title in masthead
@@ -116,7 +116,7 @@ author:
       # url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://facebook.com/jseo26"
+      # url: "https://facebook.com/jseo26"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/kitkat-42"
@@ -150,7 +150,7 @@ footer:
 # Reading Files
 include:
   - .htaccess
-  - "_pages"
+  - _pages
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -276,7 +276,7 @@ compress_html:
 defaults:
     # _posts
   - scope:
-      path: "_posts"
+      path: ""
       type: posts
     values:
       layout: single
@@ -293,7 +293,7 @@ defaults:
 defaults:
   # _pages
   - scope:
-      path: "_pages"
+      path: ""
       type: pages
     values:
       layout: single
