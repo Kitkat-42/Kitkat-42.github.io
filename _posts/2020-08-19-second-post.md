@@ -1,5 +1,5 @@
 ---
-layout: posts
+layout: single
 title: get_next_line
 ---
 
