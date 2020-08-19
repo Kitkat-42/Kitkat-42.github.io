@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: posts
 title: "get_next_line"
 categories: "42 cursus"
 ---
