@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[Libft] 프로젝트 소개, Part 1"
+title: "[Libft] 프로젝트 소개, Part 1 함수 정리"
 categories: "Libft"
 tags: [Libft, C]
 ---
