@@ -1,7 +1,6 @@
 ---
 layout: single
-title: [get_next_line] 아이디어
-author: User
+title: "[get_next_line] 아이디어"
 tags: get_next_line, C
 categories: get_next_line, C
 summary: Summary of the article
