@@ -5,7 +5,7 @@ categories: "Libft"
 tags: [Libft]
 ---
 
-<img src= "../assets/images/teaser.jpg">
+<img src= "/assets/images/teaser.jpg">
 
 ## 3. Part 2 - 추가 함수들
 
