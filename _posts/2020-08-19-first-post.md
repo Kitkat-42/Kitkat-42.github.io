@@ -1,60 +1,94 @@
 ---
 layout: single
-title: "[Libft] 프로젝트 소개, Part 1 함수 정리"
-tags: "Libft", "C"
+title: "[Libft] 프로젝트 소개, Part 1"
+categories: "Libft"
+tags: [Libft, C]
 ---
 
-Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다.  
-기존의 <string.h>, <stdlib.h>, <ctype.h> 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.  
+Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기존의 '<string.h>', '<stdlib.h>', '<ctype.h>' 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.
 
 ## 1. 프로젝트 소개
 
 - 전역변수는 사용이 금지된다.
 
 - sub functions들은 static으로 정의하여 사용하는 것을 권장한다.  
-나중에 있을 협업 프로젝트에서 함수 이름이 겹쳐서 발생하는 문제를 예방할 수 있기에 미리 익숙해지면 좋다.
+나중에 있을 협업 프로젝트에서 개발자들 간에 함수 이름이 겹쳐서 발생하는 문제를 예방할 수 있기에 미리 익숙해지면 좋다.
 
-- ar 명령어로 library를 생성한다. (libtool 명령어 금지)
+- ar 명령어로 library를 생성한다. (libtool 명령어는 금지된다.)
 
-## 2. Part 1 - Libc 함수들 만들기
+## 2. Part 1: Libc 함수들 만들기
 
-- 함수이름을 “ft_”로 생성한다 (예: strlen —> ft_strlen)￼
+- C 표준 라이브러리인 Libc 함수들을 구현하여 작동원리와 사용법을 익힌다.
+
+- 함수이름은 “ft_”로 생성한다 (예: strlen —> ft_strlen)￼
+
+- Libc의 함수들은 터미널에 man 명령어를 입력하여 매뉴얼에 정의되어 있는 프로토타입들을 사용했다.
+
+예)  
+
+	man memset
 
 ### memset() - 바이트를 값으로 설정
 
 	void *memset(void *b, int c, size_t len);
 
-어떤 메모리의 시작점부터 연속된 범위를 어떤 값으로 모두 지정하고 싶을 때 사용하는 함수이다.
+'''C
+#include "libft.h"
 
-b: 채우고자 하는 메모리의 시작 포인터(시작 주소)
-c : 채우고자 하는 값.  
-int 형이지만 내부에서는 unsigned char(1byte)  로 변환되어 저장된다.  
+void	*ft_memset(void *str, int c, size_t len)
+{
+	size_t			i;
+	unsigned char	*pstr;
 
-len : 채우고자 하는 byte의 수 (채우고자 하는 메모리의 크기)  
+	i = 0;
+	pstr = (unsigned char *)str;
+	while (i < len)
+	{
+		pstr[i] = c;
+		i++;
+	}
+	return (str);
+}
+'''
+
+어떤 메모리의 시작점부터 연속된 범위를 어떤 값으로 (바이트 단위로) 모두 지정하고 싶을 때 사용하는 함수이다.
+
+- b: 채우고자 하는 메모리의 시작 포인터(시작 주소)
+- c : 채우고자 하는 값.  
+int형으로 전달되지만 내부에서는 unsigned char(1byte)로 변환되어 저장된다.  
+
+	_* 메모리에 접근할 때는 항상 unsigned char형을 쓰는데, 다른 type들은 내부 비트의 일부를 부호 비트로 사용하는 반면 unsigned char는 모든 비트를 값으로 사용하기 때문이다_
+
+- len : 채우고자 하는 byte의 수 (채우고자 하는 메모리의 크기)  
+
+바이트 단위로 지정되기 때문에, 예를 들어 int형 배열을 1로 모두 초기화 한다고 하면 배열이 모두 '16843009'로 초기화된다고 한다. 
+16843009의 2진수 표현은 0001 00000001 00000001 00000001 이다. 즉, arr 배열은 1바이트(8비트)당 1로 초기화 된 것이다.
 
 ---
 
-bzero() -
+### bzero() - 메모리 0으로 초기화
 
 	void bzero(void *s, size_t n);
 
-메모리 공간을 n바이트만큼 0으로 채운다 (s 주소값부터)
-메모리 초기화 목적 memset 하위호환 <string.h>
+메모리 공간을 s 주소값부터 n바이트만큼 0으로 채운다.  
+똑같이 메모리 초기화 목적인 memset함수의 하위호환이라고 한다.
 
 ---
-memcpy() - 바이트 복사
+### memcpy() - 바이트 복사
 
 	void *memcpy(void *restrict dst, const void *restrict src, size_t n);
 
-src의 n 바이트를 dst로 복사, dst에 대한 포인터를 리턴함
+src의 n 바이트를 dst로 복사하고, dst에 대한 포인터를 리턴한다.
 
-_* restrict 포인터_ : 메모리 접근에 관련된 최적화 기능(C99표준) - 각 포인터가 서로 다른 메모리 공간을 가리키고 있고, 다른 곳에서 접근하지 않으니 컴파일러가 최적화를 하라는 뜻
-( 같은 메모리 공간을 가리키는 포인터에 restrict 붙이면 잘못된 결과 나올 수 있으니 주의 )
+_* restrict 포인터_ : 
+메모리 접근에 관련된 최적화 기능(C99표준)으로,  
+각 포인터가 서로 다른 메모리 공간을 가리키고 있고, 다른 곳에서 접근하지 않으니 컴파일러가 최적화를 하라는 뜻이다.  
+(같은 메모리 공간을 가리키는 포인터에 restrict 붙이면 잘못된 결과 나올 수 있으니 주의해야 한다)  
 dst와 src가 null 포인터일 경우 예외처리
 
 ---
 
-memccpy() -
+### memccpy() - 
 
 	void *memccpy(void *restrict dst, const void *restrict src, int c, size_t n);
 
