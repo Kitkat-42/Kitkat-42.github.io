@@ -1,6 +1,7 @@
 ---
 layout: single
-title: get_next_line
+title: Get Next Line - 프로젝트 소개
+tags: Get Next Line, C
 ---
 
 ## 1. 목표

@@ -1,6 +1,6 @@
 ---
 layout: single
-title: '[Get Next Line]'아이디어
+title: "[Get Next Line] 아이디어"
 tags: get_next_line, C
 ---
 
