@@ -1,7 +1,7 @@
 ---
 layout: single
-title: "[Libft] 프로젝트 소개, Part 1 함수 정리"
-tag: "Libft", "C"
+title: "[Libft]" 프로젝트 소개, Part 1 함수 정리
+tags: "Libft", "C"
 ---
 
 Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다.  
