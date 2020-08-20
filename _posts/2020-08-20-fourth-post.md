@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "[Get Next Line] 아이디어"
-tags: "get_next_line", "C"
+tags: [Get Next Line, C]
 ---
 
 get_next_line는 파일 디스크립터로부터 read()함수를 이용해 한줄씩 읽어와 출력하는 프로그램이다.  
