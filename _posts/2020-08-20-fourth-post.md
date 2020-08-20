@@ -19,6 +19,7 @@ summary: Summary of the article
 | 리턴값 | 1: line이 읽어짐<br> 0: EOF(End-of-File, 파일 끝)에 도달함<br> -1: 에러 발생 |
 <br>
 
+<<<<<<< HEAD
 | Header1 | Header2 | Header3 |
 |:--------|:-------:|--------:|
 | cell1   | cell2   | cell3   |
@@ -29,6 +30,8 @@ summary: Summary of the article
 |=====
 | Foot1   | Foot2   | Foot3   |
 
+=======
+>>>>>>> master
 우선 get_next_line의 프로토타입,
 
 	int	 get_next_line(int fd, char **line);

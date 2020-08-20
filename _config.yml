@@ -11,12 +11,12 @@
 # https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/#installing-the-theme
 
 # theme                  : "minimal-mistakes-jekyll"
-remote_theme           : "mmistakes/minimal-mistakes"
+remote_theme           : "mmistakes/minimal-mistakes@4.20.1"
 minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Kitkat's 42 Seoul"
+title                    : "Kitkat & 42Seoul"
 title_separator          : "-"
 subtitle                 : ""
 # site tagline that appears below site title in masthead
@@ -43,7 +43,7 @@ comments:
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
     appid                :
-    num_posts            : # 5 (default)
+    num_posts            : 5 (default)
     colorscheme          : # "light" (default), "dark"
   utterances:
     theme                : # "github-light" (default), "github-dark"
@@ -116,7 +116,7 @@ author:
       # url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      url: "https://facebook.com/jseo26"
+      # url: "https://facebook.com/jseo26"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/kitkat-42"
@@ -286,3 +286,6 @@ defaults:
       share: true
       related: true
       show_date: true
+      toc: true
+      toc_label: Contents
+      toc_icon: "cog"
