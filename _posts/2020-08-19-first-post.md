@@ -1,30 +1,36 @@
 ---
 layout: single
-title: Libft 함수 정리
-teaser: "/assets/images/mac.png"
-
+title: "[Libft] 프로젝트 소개, Part 1 함수 정리"
+tag: "Libft", "C"
 ---
 
-## 1. Introduction
-- 전역변수 금지
+Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다.  
+기존의 <string.h>, <stdlib.h>, <ctype.h> 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.  
 
-- sub functions : static으로 define
+## 1. 프로젝트 소개
 
-- ar 명령어로 library 생성 (libtool 명령어 금지)
+- 전역변수는 사용이 금지된다.
 
-## 2. Part 1 - Libc 함수들 생성
+- sub functions들은 static으로 정의하여 사용하는 것을 권장한다.  
+나중에 있을 협업 프로젝트에서 함수 이름이 겹쳐서 발생하는 문제를 예방할 수 있기에 미리 익숙해지면 좋다.
 
-- 함수이름 “ft_”로 생성 (ex. strlen —> ft_strlen)￼
+- ar 명령어로 library를 생성한다. (libtool 명령어 금지)
 
-memset() - 바이트를 값으로 설정
+## 2. Part 1 - Libc 함수들 만들기
+
+- 함수이름을 “ft_”로 생성한다 (예: strlen —> ft_strlen)￼
+
+### memset() - 바이트를 값으로 설정
 
 	void *memset(void *b, int c, size_t len);
 
-어떤 메모리의 시작점부터 연속된 범위를 어떤 값으로(바이트 단위) 모두 지정하고 싶을 때 사용하는 함수 <string.h>
+어떤 메모리의 시작점부터 연속된 범위를 어떤 값으로 모두 지정하고 싶을 때 사용하는 함수이다.
 
-Len : 채우고자 하는 byte의 수 (채우고자 하는 메모리의 크기)
-c : 채우고자 하는 값 ((int 형이지만 내부에서는 unsigned char(1byte)  로 변환되어 저장됨)
-B: 채우고자 하는 메모리의 시작 포인터(시작 주소)
+b: 채우고자 하는 메모리의 시작 포인터(시작 주소)
+c : 채우고자 하는 값.  
+int 형이지만 내부에서는 unsigned char(1byte)  로 변환되어 저장된다.  
+
+len : 채우고자 하는 byte의 수 (채우고자 하는 메모리의 크기)  
 
 ---
 
