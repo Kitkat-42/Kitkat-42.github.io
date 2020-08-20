@@ -2,7 +2,7 @@
 layout: single
 title: "[Libft] Part2, bonus 파트"
 categories: "Libft"
-tags: [Libft]
+tags: [Libft, C]
 ---
 
 <img src= "../assets/images/teaser.jpg" width="400">
@@ -11,7 +11,7 @@ tags: [Libft]
 
 ft_ substr / ft_strjoin / ft_strtrim / ft_split / ft_itoa / ft_strmapi / ft_putchar_fd / ft_putstr_fd / ft_putendl_fd
 
-substr() - 스트링의 서브스트링 리턴
+### substr() - 스트링의 서브스트링 리턴
 
 	char *ft_substr(char const *s, unsigned int start, size_t len);
 
@@ -22,7 +22,7 @@ substr() - 스트링의 서브스트링 리턴
 
 ---
 
-strjoin() -
+### strjoin() - 스트링 연결
 
 	char *ft_strjoin(char const *s1, char const *s2);
 
@@ -36,49 +36,49 @@ malloc으로 s1과 s2를 합친 새로운 스트링을 할당하고 리턴.
 
 ---
 
-strtrim() -
+### strtrim() - 스트링 처음과 끝 다듬기
 
 	char *ft_strtrim(char const *s1, char const *set);
 
-s1: 트리밍할 스트링
+- s1: 트리밍할 스트링  
 s2: 트리밍할 참조 문자 세트
 
-malloc으로 할당하고 'set'에 지정된 문자가 문자열의 시작과 끝에서 제거 된 s1의 사본을 반환.
+- malloc으로 할당하고, 'set'에 지정된 문자가 문자열의 시작과 끝에서 제거 된 s1의 사본을 반환한다.
 
-1) s1 = "ABCCBA" set = "AB"
-résultat : "CC"
-2) s1 = "ACCBACBA" set = "AB"
-résultat : "CCBAC"
-3) s1 = "Hello World!" set = "Hlde"
-résultat : "o World!"
+	1) s1 = "ABCCBA" set = "AB"
+	résultat : "CC"
+	2) s1 = "ACCBACBA" set = "AB"
+	résultat : "CCBAC"
+	3) s1 = "Hello World!" set = "Hlde"
+	résultat : "o World!"
 ​
-즉, 처음부터 시작해서 맞는 문자가 있다면 다음 문자도 확인하며, 가장 뒷 문자도 동일하게 진행.
+- 즉, 처음부터 시작해서 맞는 문자가 있다면 다음 문자도 확인하며, 가장 뒷 문자도 동일하게 진행한다.
 
-트리밍된 스트링 리턴 (malloc할당 실패시 NULL리턴)
+- 트리밍된 스트링을 리턴한다. (malloc할당 실패시 NULL을 리턴한다)
 
-* 예외처리
-“aaaaa” “a”
-“” “bc”
+* 예외처리  
+(s1, set)  
+	“aaaaa” “a”  
+	“” “bc”  
+와 같은 경우들도 처리해주어야 한다.
 
 ---
 
-split() -
+### split() - 
 
 	char **ft_split(char const *s, char c);
 
-malloc으로 할당하고 문자 'c'를 구분자로 사용하여 string을 분리하여 얻은 문자열 배열을 반환.
+- malloc으로 할당하고 문자 'c'를 구분자로 사용하여 string을 분리하여 얻은 문자열 배열을 반환.
 배열은 NULL 포인터로 끝나야함.
 
-Malloc, free 이용
+- malloc, free 이용
 
-새로운 문자열 반환
+- 새로운 문자열 반환
 할당 실패시 NULL반환
-
-? Free 언제 해줘야 하는지?
 
 ---
 
-itoa() - 정수를 스트링으로 변환
+### itoa() - 정수를 스트링으로 변환
 
 	char *ft_itoa(int n);
 
@@ -88,7 +88,7 @@ malloc으로 할당하고 인수로받은 정수를 나타내는 문자열 리�
 
 ---
 
-ft_strmapi() - 스트링의 각 문자에 함수적용
+### ft_strmapi() - 스트링의 각 문자에 함수적용
 
 	char *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
@@ -100,7 +100,7 @@ Malloc 할당 실패시 NULL 리턴
 
 ---
 
-ft_putchar_fd()
+### ft_putchar_fd()
 
 	void ft_putchar_fd(char c, int fd);“write”이용
 
@@ -108,7 +108,7 @@ ft_putchar_fd()
 
 ---
 
-ft_putstr_fd()
+### ft_putstr_fd()
 
 	void ft_putstr_fd(char *s, int fd);
 
@@ -117,7 +117,7 @@ ft_putstr_fd()
 
 ---
 
-ft_putendl_fd()
+### ft_putendl_fd()
 
 	void ft_putendl_fd(char *s, int fd);
 
@@ -126,7 +126,7 @@ ft_putendl_fd()
 
 ---
 
-ft_putnbr_fd()
+### ft_putnbr_fd()
 
 	void ft_putnbr_fd(int n, int fd);
 
@@ -150,7 +150,8 @@ next: 다음 element 의 주소 (마지막 element일 경우 NULL)
 - make bonus 명령어로 libft.a 라이브러리에 보너스 함수 추가되게
 - .c 파일과 헤더에 _bonus 추가할 필요 x. (보너스 함수들 있는 파일들에만 추가)
 
-ft_lstnew()
+
+### ft_lstnew()
 
 	t_list *ft_lstnew(void *content);
 
@@ -162,7 +163,7 @@ content: 새로운 element를 만들 content
 
 ---
 
-ft_lstadd_front() - 구조체의 시작부분에 새로운 element ‘new’추가
+### ft_lstadd_front() - 구조체의 시작부분에 새로운 element ‘new’추가
 
 	void ft_lstadd_front(t_list **lst, t_list *new);
 
@@ -171,7 +172,7 @@ new: 구조체에 추가될 element를 가리키는 포인터의 주소
 
 ---
 
-ft_lstsize() - list에 있는 element들의 개수를 셈
+### ft_lstsize() - list에 있는 element들의 개수 반환
 
 	int ft_lstsize(t_list *lst);
 
@@ -180,7 +181,7 @@ list의 길이 반환
 
 ---
 
-ft_lstlast() - list의 마지막 element 반환
+### ft_lstlast() - list의 마지막 element 반환
 
 	t_list *ft_lstlast(t_list *lst);
 
@@ -189,7 +190,7 @@ lst: 리스트의 시작부분
 
 ---
 
-ft_lstadd_back() - element ‘new’를 리스트의 마지막에 추가
+### ft_lstadd_back() - element ‘new’를 리스트의 마지막에 추가
 
 	void ft_lstadd_back(t_list **lst, t_list *new);
 
@@ -199,7 +200,7 @@ element ‘new’를 리스트의 마지막부분에 추가
 
 ---
 
-ft_lstdelone()
+### ft_lstdelone() -
 
 	void ft_lstdelone(t_list *lst, void (*del)(void *));
 
