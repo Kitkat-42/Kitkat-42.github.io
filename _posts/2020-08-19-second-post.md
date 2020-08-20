@@ -1,7 +1,8 @@
 ---
 layout: single
 title: "[Get Next Line] 프로젝트 소개"
-tags: "Get Next Line", "C"
+tags: [Get Next Line, C]
+categories: "Get Next Line"
 ---
 
 ## 1. 목표

@@ -5,7 +5,7 @@ categories: "Libft"
 tags: [Libft, C]
 ---
 
-Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기존의 <code>'<string.h>', '<stdlib.h>', '<ctype.h>'</code> 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.
+Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기존의 <code><string.h>, <stdlib.h>, <ctype.h></code> 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.
 
 ## 1. 프로젝트 소개
 
@@ -32,22 +32,22 @@ Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기�
 
 	void *memset(void *b, int c, size_t len);
 
-'''C
-	#include "libft.h"
+'''c++
+#include "libft.h"
 
-	void	*ft_memset(void *str, int c, size_t len)
+void	*ft_memset(void *str, int c, size_t len)
+{
+	size_t			i;
+	unsigned char	*pstr;
+
+	i = 0;
+	pstr = (unsigned char *)str;
+	while (i < len)
 	{
-		size_t			i;
-		unsigned char	*pstr;
-
-		i = 0;
-		pstr = (unsigned char *)str;
-		while (i < len)
-		{
-			pstr[i] = c;
-			i++;
-		}
-		return (str);
+		pstr[i] = c;
+		i++;
+	}
+	return (str);
 	}
 '''
 
@@ -56,8 +56,8 @@ Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기�
 - b: 채우고자 하는 메모리의 시작 포인터(시작 주소)
 - c : 채우고자 하는 값.  
 int형으로 전달되지만 내부에서는 unsigned char(1byte)로 변환되어 저장된다.  
-
-	_* 메모리에 접근할 때는 항상 unsigned char형을 쓰는데, 다른 type들은 내부 비트의 일부를 부호 비트로 사용하는 반면 unsigned char는 모든 비트를 값으로 사용하기 때문이다_
+<br>
+메모리에 접근할 때는 항상 unsigned char형을 쓰는데, 다른 type들은 내부 비트의 일부를 부호 비트로 사용하는 반면 unsigned char는 모든 비트를 값으로 사용하기 때문이다.
 
 - len : 채우고자 하는 byte의 수 (채우고자 하는 메모리의 크기)  
 
