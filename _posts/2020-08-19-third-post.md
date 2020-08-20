@@ -1,9 +1,9 @@
 ---
 layout: single
-title: Libft - Part2, bonus 파트
+title: "[Libft] Part2, bonus 파트"
 categories: "Libft"
 ---
-<img src= "../assets/images/teaser.jpg">
+<img src= "../assets/images/teaser.jpg"></img>
 
 ## 3. Part 2 - 추가 함수들
 
