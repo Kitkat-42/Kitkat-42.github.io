@@ -5,7 +5,7 @@ categories: "Libft"
 tags: [Libft, C]
 ---
 
-Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기존의 '<string.h>', '<stdlib.h>', '<ctype.h>' 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.
+Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기존의 <code>'<string.h>', '<stdlib.h>', '<ctype.h>'</code> 등의 헤더파일에 선언되어 있는 유용한 C 함수들을 직접 만들고, 이후의 프로젝트에서도 사용하게 될 것이다.
 
 ## 1. 프로젝트 소개
 
@@ -33,22 +33,22 @@ Libft는 나만의 함수 라이브러리를 만드는 프로젝트이다. 기�
 	void *memset(void *b, int c, size_t len);
 
 '''C
-#include "libft.h"
+	#include "libft.h"
 
-void	*ft_memset(void *str, int c, size_t len)
-{
-	size_t			i;
-	unsigned char	*pstr;
-
-	i = 0;
-	pstr = (unsigned char *)str;
-	while (i < len)
+	void	*ft_memset(void *str, int c, size_t len)
 	{
-		pstr[i] = c;
-		i++;
+		size_t			i;
+		unsigned char	*pstr;
+
+		i = 0;
+		pstr = (unsigned char *)str;
+		while (i < len)
+		{
+			pstr[i] = c;
+			i++;
+		}
+		return (str);
 	}
-	return (str);
-}
 '''
 
 어떤 메모리의 시작점부터 연속된 범위를 어떤 값으로 (바이트 단위로) 모두 지정하고 싶을 때 사용하는 함수이다.
