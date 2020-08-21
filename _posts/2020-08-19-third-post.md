@@ -141,11 +141,15 @@ malloc 할당 실패시 NULL 리턴
 
 - libft.h 헤더파일에 구조체 추가
 
+<code>
+
 	typedef struct		s_list
 	{
 		void			*content;
 		struct s_list	*next;
 	}					t_list;
+
+</code>
 
 - content: void *로 어떤 타입의 데이터든 저장한다.  
 next: 다음 element 의 주소 (마지막 element일 경우 NULL)
@@ -155,7 +159,7 @@ next: 다음 element 의 주소 (마지막 element일 경우 NULL)
 - .c 파일과 헤더에 _bonus 추가할 필요 x. (보너스 함수들 있는 파일들에만 추가)
 
 
-### ft_lstnew()
+### ft_lstnew() - 리스트에 element 추가
 
 	t_list *ft_lstnew(void *content);
 
@@ -167,7 +171,7 @@ content: 새로운 element를 만들 content
 
 ---
 
-### ft_lstadd_front() - 구조체의 시작부분에 새로운 element ‘new’추가
+### ft_lstadd_front() - 리스트의 앞에 새 element 추가
 
 	void ft_lstadd_front(t_list **lst, t_list *new);
 
@@ -194,7 +198,7 @@ lst: 리스트의 시작부분
 
 ---
 
-### ft_lstadd_back() - element ‘new’를 리스트의 마지막에 추가
+### ft_lstadd_back() - 리스트의 마지막에 새 element 추가
 
 	void ft_lstadd_back(t_list **lst, t_list *new);
 
@@ -204,10 +208,12 @@ element ‘new’를 리스트의 마지막부분에 추가
 
 ---
 
-### ft_lstdelone() -
+### ft_lstdelone() - 리스트에서 element 하나 삭제
 
 	void ft_lstdelone(t_list *lst, void (*del)(void *));
 
 lst: free할 element
 Del: content를 삭제하기 위해 사용된 함수의 주소
 “Free”사용
+
+### ft_lstmap() -
