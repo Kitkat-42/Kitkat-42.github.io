@@ -19,6 +19,7 @@ categories: [Get Next Line]
 | 프로토타입 | int	get_next_line(int fd, char **line); |
 | 제출할 파일 |get_next_line.c, get_next_line_utils.c, get_next_line.h |
 | 파라미터 | #1. 읽어올 파일 디스크립터<br>  #2. 읽어진 값|
+| 외부함수 | read, malloc, free |
 | 리턴값 | 1: line이 읽어짐<br> 0: EOF(End-of-File, 파일 끝)에 도달함<br> -1: 에러 발생 |
 
 <br>
