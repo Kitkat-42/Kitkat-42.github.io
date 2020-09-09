@@ -112,12 +112,48 @@ static을 붙여 정적 변수로 선언을 하면 이렇게 된다.
 		return 0;
 	}
 
-즉, 정적 변수는 함수를 벗어나더라도 변수가 사라지지 않고 계속 유지되므로 ++ 연산자가 적용되어 값이 계속 증가하게 된다. static int num1 = 0;은 프로그램이 시작될 때 변수를 초기화하며 increaseNumber 함수가 호출될 때는 변수를 초기화하지 않고 무시한다.  
+즉, 정적 변수는 함수를 벗어나더라도 변수가 사라지지 않고 계속 유지되므로 ++ 연산자가 적용되어 값이 계속 증가하게 된다. static int num1 = 0;은 프로그램이 시작될 때 변수를 초기화하며 increaseNumber 함수가 호출될 때는 변수를 초기화하지 않고 무시한다. 정적 변수는 데이터(data) 영역에 저장되어 프로그램 종료시까지 남아있다.
 
 Get Next Line에서 정적 변수가 중요한 이유는 
 
+	int					get_next_line(int fd, char **line)
+	{
+		static char		*backup[OPEN_MAX];
+		char			buf[BUFFER_SIZE + 1];
+		int				read_size;
+		int				cut_idx;
 
+		if ((fd < 0) || (line == 0) || (BUFFER_SIZE <= 0))
+			return (-1);
+		while ((read_size = read(fd, buf, BUFFER_SIZE)) > 0)
+		{
+			buf[read_size] = '\0';
+			backup[fd] = ft_strjoin(backup[fd], buf);
+			if ((cut_idx = is_newline(backup[fd])) >= 0)
+				return (split_line(&backup[fd], line, cut_idx));
+		}
+		return (return_all(&backup[fd], line, read_size));
+	}
 
+static으로 backup을 선언해 read한 버퍼를 백업해 놓아야 하기 때문이다.
+
+1. 버퍼를 read할 임시 버퍼를 만든다.
+	char buf[BUFFER_SIZE + 1];
+
+2. read한 버퍼를 백업할 static 버퍼를 만든다.
+	static char	*backup[OPEN_MAX];
+
+3. read로 라인을 읽은 다음
+
+4. buf를 static 변수 backup에 백업한다.
+
+5. backup 안에 개행문자가 있는지 없는지 검사한다.
+
+6. 개행문자가 있으면 다음 단계로 넘어가고, 없다면 3번으로 돌아가 파일을 계속 읽으면서
+기존에 백업한 것과 계속 합쳐나간다. -> append_backup 함수
+
+7. 개행문자가 있는 backup을 개행문자 전후로 잘라서, \n 전까지는 line에다가 주고, \n 후는
+다시 static 변수 backup에 백업한다. -> split_line 함수
 
 
 ## 2. get_next_line_utils.c
@@ -125,4 +161,9 @@ Get Next Line에서 정적 변수가 중요한 이유는
 >
 필요한 함수들은 무엇이 있을까?  
 그전에 만들어둔 libft는 사용하지 못하므로 적절한 함수들을 get_next_line_utils.c 에 넣어주어야 한다.
+
+ft_strjoin :
+ft_memcpy :
+
+
 
