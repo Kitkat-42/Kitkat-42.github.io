@@ -62,11 +62,14 @@ Netwhat은 네트워크 문제들에 대한 도입 프로젝트이다.
 `ipconfig getifaddr en0`  
 를 터미널에 입력하면 나의 IP 주소를 확인할 수 있다.
 
-![img](../assets/images/IP.png)
+![img](/assets/images/IP.png)
 
 ### 2) 넷마스크(Netmask)
 
 > 넷마스크(Netmask)란?
+
+네트워크 주소 부분의 비트를 1로 치환한 것이 넷마스크이다.
+IP 주소와 넷마스크를 AND연산을 하면 네트워크 주소를
 
 ### 3) 서브넷(Subnet)
 
