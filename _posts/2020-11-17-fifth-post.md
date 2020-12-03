@@ -324,22 +324,22 @@ DHCP는 UDP 프로토콜을 기반으로 작동한다. UDP의 특징인 단말 �
 
 DHCP의 작동 과정은 다음과 같다.
 
-1. DHCP Server Discovery (DHCP 서버 발견)
+**1. DHCP Server Discovery (DHCP 서버 발견)**
 
 호스트는 자신이 접속할 DHCP 서버의 주소를 알지 못하기 때문에 DHCP 서버 발견 메시지를 서브넷 상의 모든 노드로 브로드캐스팅한다.
 
-2. DHCP Server Offer (DHCP 서버 제공)
+**2. DHCP Server Offer (DHCP 서버 제공)**
 
 DHCP 발견 메시지를 받으면 서버 제공 메시지를 보낸다.  
 서버 제공 메시지에는 클라이언트의 IP 주소, 도메인 이름, IP 주소 임대 기간 등의 설정 파라미터가 포함된다.  
 DHCP Server Offer도 송신 호스트를 모르기 때문에 1번에서처럼 서브넷 상의 모든 노드로 브로드캐스팅한다.
 
-3. DHCP Request (DHCP 요청)
+**3. DHCP Request (DHCP 요청)**
 
 호스트는 서브넷 상의 모든 노드로 DHCP 서버 발견 메시지를 보냈기 때문에 하나 이상의 서버 제공 메시지를 받게 된다.  
 그 중 최적의 서버를 선택한 후 서버로 DHCP 요청 메시지를 보낸다.
 
-4. DHCP ACK(Acknowledgement)
+**4. DHCP ACK(Acknowledgement)**
 
 서버는 DHCP 요청 메시지에 대해 확정한다는 의미로 ACK 메시지를 보낸다.
 
@@ -360,5 +360,3 @@ DHCP Server Offer도 송신 호스트를 모르기 때문에 1번에서처럼 �
 DNS(Domain Name Server)란, 도메인 네임과 IP 주소의 대응 관계를 데이터베이스로 구축해 사용하는 인터넷 프로토콜이다.  
 DNS는 브라우징을 단순화하는 매우 특별한 목적을 수행하는 인터넷 상의 또 다른 컴퓨터라고 볼 수 있다.  
 자주 방문하는 사이트의 IP 주소를 매번 기억할 수 없기 때문에, 도메인 이름(www.으로 시작하는 주소)을 사용하는데, https://www.naver.com 과 같은 도메인을 125.209.222.141와 같은 IP 주소로 변환해주는 일을 바로 DNS가 수행하는 것이다. 이러한 DNS를 운영하는 서버를 네임서버(Name Server)라고 한다.
-
-# 8. 라우팅(Routing)
