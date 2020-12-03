@@ -206,7 +206,7 @@ C 클래스인 `203.0.113.43`이라는 IP 주소에서 네트워크의 주소가
 
 ## 5.1 공인 IP (Public IP)
 
-인터넷 사용자의 로컬 네트워크를 식별하기 위해 **ISP(인터넷 서비스 공급자)가 제공하는 IP 주소**이다.  
+인터넷 사용자의 로컬 네트워크를 식별하기 위해 **ISP(인터넷 서비스 공급자- 우리나라의 경우 SK 브로드밴드, KT 등)가 제공하는 IP 주소**이다.  
 공용 IP 주소라고도 불리며 외부에 공개되어 있는 IP 주소이다.
 
 - 공인 IP는 전세계에서 유일한 IP 주소를 갖는다.
@@ -288,14 +288,77 @@ TCP(Transmission Control Protocol), UDP(User Datagram Protocol) 두 프로토콜
 
 즉, **신뢰성이 요구되는 애플리케이션에서는 TCP**를 사용하고 **간단한 데이터를 빠른 속도로 전송하고자 할 때는 UDP**를 사용한다.
 
-| TCP                                                           | UDP                                                            |
-| ------------------------------------------------------------- | -------------------------------------------------------------- |
-| Connection-oriented protocol (연결지향형 프로토콜)            | Connection-less protocol (비 연결지향형 프로토콜)              |
-| Connection by byte stream (바이트 스트림을 통한 연결)         | Connection by message stream (메세지 스트림을 통한 연결)       |
-| Congestion / Flow control (혼잡제어, 흐름제어)                | NO Congestion / Flow control (혼잡제어와 흐름제어 지원 X)      |
-| Ordered, Lower speed (순서 보장, 상대적으로 느림)             | Not ordered, Higer speed (순서 보장되지 않음, 상대적으로 빠름) |
-| Reliable data transmission (신뢰성 있는 데이터 전송 - 안정적) | Unreliable data transmission (데이터 전송 보장 X)              |
-| TCP packet : Segment (세그먼트 TCP 패킷)                      | UDP packet : Datagram (데이터그램 UDP 패킷)                    |
-| HTTP, Email, File transfer에서 사용                           | DNS, Broadcasting (도메인, 실시간 동영상 서비스에서 사용)      |
+| TCP                                                                             | UDP                                                                  |
+| ------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| 연결지향형 프로토콜(연결이 성공해야 통신 가능)                                  | 비 연결지향형 프로토콜(연결 없이 통신이 가능)                        |
+| 바이트 스트림을 통한 연결 ( 데이터의 경계를 구분하지 않음. Byte-Stream Service) | 메세지 스트림을 통한 연결 (데이터의 경계를 구분함. Datagram Service) |
+| Congestion / Flow control (혼잡제어, 흐름제어)                                  | NO Congestion / Flow control (혼잡제어와 흐름제어 지원 X)            |
+| Ordered, Lower speed (순서 보장, 상대적으로 느림)                               | Not ordered, Higer speed (순서 보장되지 않음, 상대적으로 빠름)       |
+| 신뢰성 있는 데이터 전송 - 안정적, 데이터의 재전송 존재                          | 데이터 전송 보장 X (데이터의 재전송 없음)                            |
+| TCP packet : Segment (세그먼트 TCP 패킷)                                        | UDP packet : Datagram (데이터그램 UDP 패킷)                          |
+| HTTP, Email, File transfer에서 사용                                             | DNS, Broadcasting (도메인, 실시간 동영상 서비스에서 사용)            |
+| 일 대 일(Unicast) 통신)                                                         | 일 대 일, 일 대 다(Broadcast), 다 대 다(Multicast) 통신              |
+| **공통점**                                                                      |                                                                      |
+| - 포트 번호를 이용하여 주소를 지정                                              |                                                                      |
+| - 데이터 오류 검사를 위한 체크섬 존재                                           |                                                                      |
 
-# 7.
+# 7. DHCP / DNS 프로토콜: 더 편리한 인터넷을 위해
+
+## 7.1 DHCP 프로토콜
+
+DHCP(Dynamic Host Configuration Protocol)란, 동적 호스트 설정 프로토콜로서 해당 호스트에게 `IP주소, 서브넷 마스크, 기본 게이트웨이 IP 주소, DNS서버 IP주소`를 자동으로 `일정 시간` 할당해주는 인터넷 프로토콜이다.
+
+DHCP를 통한 IP 주소 할당은 `임대(lease)`라는 개념을 가지고 있어 DHCP 서버가 IP 주소를 영구적으로 단말에 할당하는 것이 아니고 **임대기간(IP Lease Time)**을 명시하여 그 기간 동안만 IP 주소를 사용하도록 한다.  
+단말이 임대 기간 이후에도 계속 해당 IP 주소를 사용하고자 한다면 **IP주소 임대기간 갱신(IP Address Renewal)**을 DHCP 서버에 요청해야 하고, 더 이상 사용하고자 하지 않으면 **IP 주소 반납 절차(IP Address Release)**를 수행하게 된다.
+
+즉, `유동 IP`를 할당한다 = DHCP 서버로부터 IP를 일정기간만큼 임대해온다.
+
+## 7.2 DHCP의 작동 과정
+
+DHCP는 호스트가 네트워크에 접속할 때마다 IP 주소를 동적으로 할당한다.  
+DHCP는 주로 가정용 인터넷이나 무선랜(LAN), 즉 공유기에서 사용한다.
+
+DHCP는 UDP 프로토콜을 기반으로 작동한다. UDP의 특징인 단말 간 연결을 수립하지 않는다는 점과 신뢰성을 보장하지 않는다는 점 때문에 UDP는 TCP보다 성능이 좋다.  
+호스트가 시작됐을 때 DHCP 서버를 알지 못하기 때문에 서브넷 상의 모든 노드로 브로드캐스팅해야 한다.
+성능이 좋아야 하고 연결 대상을 모르기 때문에 UDP를 사용한다.
+
+DHCP의 작동 과정은 다음과 같다.
+
+1. DHCP Server Discovery (DHCP 서버 발견)
+
+호스트는 자신이 접속할 DHCP 서버의 주소를 알지 못하기 때문에 DHCP 서버 발견 메시지를 서브넷 상의 모든 노드로 브로드캐스팅한다.
+
+2. DHCP Server Offer (DHCP 서버 제공)
+
+DHCP 발견 메시지를 받으면 서버 제공 메시지를 보낸다.  
+서버 제공 메시지에는 클라이언트의 IP 주소, 도메인 이름, IP 주소 임대 기간 등의 설정 파라미터가 포함된다.  
+DHCP Server Offer도 송신 호스트를 모르기 때문에 1번에서처럼 서브넷 상의 모든 노드로 브로드캐스팅한다.
+
+3. DHCP Request (DHCP 요청)
+
+호스트는 서브넷 상의 모든 노드로 DHCP 서버 발견 메시지를 보냈기 때문에 하나 이상의 서버 제공 메시지를 받게 된다.  
+그 중 최적의 서버를 선택한 후 서버로 DHCP 요청 메시지를 보낸다.
+
+4. DHCP ACK(Acknowledgement)
+
+서버는 DHCP 요청 메시지에 대해 확정한다는 의미로 ACK 메시지를 보낸다.
+
+<img src="https://media.vlpt.us/images/ette9844/post/0ea30566-f428-4564-9d97-ece1dc67e1e0/image.png" />
+
+> DHCP의 작동 과정
+
+- DHCP가 설정해주는 주소 정보들
+  | 항목 | 결과 |
+  | ---------------- | -------------------------------- |
+  | IP 주소 | 192.168.0.4 |
+  | 서브넷 마스크 | 255.255.255.0 |
+  | 기본 게이트웨이 | 192.168.0.1 |
+  | DNS 서버 IP 주소 | 210.220.163.82 / 219.250.363.130 |
+
+## 7.3 DNS 프로토콜
+
+DNS(Domain Name Server)란, 도메인 네임과 IP 주소의 대응 관계를 데이터베이스로 구축해 사용하는 인터넷 프로토콜이다.  
+DNS는 브라우징을 단순화하는 매우 특별한 목적을 수행하는 인터넷 상의 또 다른 컴퓨터라고 볼 수 있다.  
+자주 방문하는 사이트의 IP 주소를 매번 기억할 수 없기 때문에, 도메인 이름(www.으로 시작하는 주소)을 사용하는데, https://www.naver.com 과 같은 도메인을 125.209.222.141와 같은 IP 주소로 변환해주는 일을 바로 DNS가 수행하는 것이다. 이러한 DNS를 운영하는 서버를 네임서버(Name Server)라고 한다.
+
+# 8. 라우팅(Routing)
