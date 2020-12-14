@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "[ft_printf] 함수 'printf'에 대해"
+title: "[ft_printf] 가변 인자 함수"
 categories: "ft_printf"
 tags: [ft_printf, C]
 ---
@@ -30,7 +30,9 @@ int strcmp(const char *s1, const char *s2);
 생각해보니, 우리는 지금까지 printf 함수를 쓸 때 자연스럽게 아래와 같이 여러 타입의 여러 매개변수(파라미터)를 넣어 사용하고 있었다.
 
 ```c
-printf("%s %d * %d = %d", "Hello world!", 3, 5, 3*5);
+int main(){
+    printf("%s %d * %d = %d", "Hello world!", 3, 5, 3*5);
+}
 
 결과> Hello world! 3 * 5 = 15
 ```
@@ -75,10 +77,30 @@ int main()
 
 > man 3 stdarg
 
-- **va_list**: 가변 인자 목록. 가변 인자의 메모리 주소를 저장하는 포인터이다.
-- **va_start**: 가변 인자를 가져올 수 있도록 포인터를 설정한다.
-- **va_arg**: 가변 인자 포인터에서 특정 자료형 크기만큼 값을 가져온다.
-- **va_end**: 가변 인자 처리가 끝났을 때 포인터를 NULL로 초기화한다.
+### va_list
+
+각 가변 인자의 시작 주소를 가리킬 포인터이다.
+
+### va_start
+
+```c
+  void va_start(va_list ap, variable_name);
+```
+
+`va_list`로 만들어진 포인터에게 **가변인자 중 첫번째 선택적 인수(variable_name)의 주소를 가르쳐주는** 매크로이다.
+
+- ap:
+- variable_name:
+
+### va_copy
+
+### va_arg
+
+가변 인자 포인터에서 특정 자료형 크기만큼 값을 가져온다.
+
+### va_end
+
+가변 인자 처리가 끝났을 때 포인터를 NULL로 초기화한다.
 
 매크로의 설명들만 보면 당최 무슨 뜻인지 이해가 가지 않으니 가변 인자 함수를 만드는 예시를 보자.
 
@@ -165,11 +187,21 @@ for (int i = 0; i < args; i++)    // 가변 인자 개수만큼 반복
     }
 ```
 
-아하, 이쯤에서 매크로들을 다시 살펴보자.
+## 2.2 자료형이 다른 가변 인자 함수 만들기
 
-- **va_list**는 각 가변 인자의 시작 주소를 가리킬 포인터이다.
-- **va_start**는 `va_list`로 만들어진 포인터에게 가변인자 중 첫번째 인자의 주소를 가르쳐주는 매크로이다.
-- **va_arg**는 특정 가변인자를 가리키고 있는 va_list의 포인터를 다음 가변인자로 이동시켜주는 매크로이다.
-- **va_end**는 사용한 가변인자 변수를 끝낼 때 사용한다.
+각각 자료형이 다른 가변 함수를 만들기 위해서는 가변인자의 자료형을 받아 각 자료형일 때 따로 처리해주는 함수를 만들면 된다.
 
-**va_copy**
+먼저 가변 인자를 처리할 때 사용할 각 자료형의 약칭이다.
+
+- 정수(int): 'i'
+- 실수(double): 'd'
+- 문자(char): 'c'
+- 문자열(char \*): 's'
+
+<img src="https://dojang.io/pluginfile.php/642/mod_page/content/26/unit66-3.png" />
+
+만약 "Hello, world!"(문자열), 10(정수), 'a'(문자), 1.234567(실수)가 차례로 들어온다면, 첫 파라미터로 "sicd"를 받아 들어올 자료형들을 알려준다.
+
+<img src="https://dojang.io/pluginfile.php/642/mod_page/content/26/unit66-4.png" />
+
+그래야만 반복문에서 반복할 때마다 ap가 "sicd" 순서대로 char \*, int, char, double 크기만큼 이동해서 값을 가져올 수 있게되는 것이다.
