@@ -77,30 +77,65 @@ int main()
 
 > man 3 stdarg
 
+이 헤더파일에는 다음과 같이 4개의 매크로가 정의되어 있다.
+
+- va_start
+- va_copy
+- va_arg
+- va_end
+
 ### va_list
 
-각 가변 인자의 시작 주소를 가리킬 포인터이다.
+먼저 위 매크로를 사용하기 위해서는 va_list라는 타입의 변수가 하나 필요하다.  
+va_list는 char \* 타입으로 정의되어 있고 가변 인자들을 가리키게 될 것이다.
+
+```c
+typedef char *va_list;
+```
 
 ### va_start
+
+va_start 매크로는 다음과 같이 두 개의 인자를 받는다.
 
 ```c
   void va_start(va_list ap, variable_name);
 ```
 
-`va_list`로 만들어진 포인터에게 **가변인자 중 첫번째 선택적 인수(variable_name)의 주소를 가르쳐주는** 매크로이다.
+이 매크로는 **ap가 가변 인자로 들어온 값들의 첫 주소를 가리킬 수 있도록 va_list를 initialize** 해준다.  
+첫 주소의 기준은 variable_name 변수에 따라 달라지며 variable_name의 다음 인자를 가변 인자의 첫 주소로 초기화한다. 즉, variable_name의 다음에 오는 인자를 va_list가 가리키게 만든다.
+
+```c
+void func(int count, int ...)
+{
+    va_list ap;
+    va_start(ap, count); //ap는 count 다음의 인자를 가리키게 된다.
+}
+```
 
 - ap:
 - variable_name:
 
 ### va_copy
 
+va_copy는 va_list 타입의 변수 2개를 인자로 받으며, 첫 번째 list에 두 번째 list를 복사한다.  
+즉 list2가 0x0004를 가리킬 경우 va_copy(list1,list2)를 호출하면 list1dl 0x0004를 가리키게 된다.
+va_copy의 첫 인자는 초기화 상태가 아니어도 된다.
+
 ### va_arg
 
-가변 인자 포인터에서 특정 자료형 크기만큼 값을 가져온다.
+va_arg는 va_list 타입의 변수와 타입(형) 자체를 인자로 받는다.  
+va_list가 현재 가리키는 위치의 값을 반환하고 2번째 인자로 받은 타입의 크기만큼 주소를 증가시킨다.  
+즉 아래와 같이 호출하면 ap가 가리키는 값을 반환하고 list는 +4바이트(int)의 위치, 즉 다음 값을 가리킨다.
+
+```c
+va_arg(ap, int);
+```
 
 ### va_end
 
-가변 인자 처리가 끝났을 때 포인터를 NULL로 초기화한다.
+va_end는 va_list 타입의 변수를 받으며, 가변 인자 처리가 끝났을 때 포인터를 NULL로 초기화한다.
+
+## 2.3 가변 인자 함수 만들기 예시
 
 매크로의 설명들만 보면 당최 무슨 뜻인지 이해가 가지 않으니 가변 인자 함수를 만드는 예시를 보자.
 
